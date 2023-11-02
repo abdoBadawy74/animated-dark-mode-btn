@@ -7,6 +7,7 @@ font-family: 'Noto Sans', sans-serif; */
 body {
   background: #fff;
   overflow: hidden;
+  transition: 0.3s ease;
 }
 nav {
   height: 80px;
@@ -39,6 +40,15 @@ p {
   background-color: #f2f2f2;
   border-radius: 5px;
 }
+.button::before {
+  position: absolute;
+  content: "Disabled";
+  color: #000;
+  right: 8px;
+  font-size: 14px;
+  line-height: 40px;
+  font-family: "Noto Sans", sans-serif;
+}
 .center {
   position: absolute;
   top: 50%;
@@ -46,7 +56,6 @@ p {
   width: 48px;
   height: 24px;
   border-radius: 20px;
-  background-color: blue;
   transform: translate(-50%, -50%);
 }
 input {
@@ -56,10 +65,35 @@ input {
   background-color: #e6e6e6;
   border-radius: 20px;
   outline: none;
+  transition: 0.3s;
   cursor: pointer;
   -webkit-appearance: none;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 }
-input::before{
-    
+input::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  border-radius: 20px;
+  background: linear-gradient(#fff, #f2f2f2, #e6e6e6, #d9d9d9);
+  transform: scale(0.85);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+input:checked {
+  background: #00d2e6;
+}
+input:checked::before {
+  left: 24px;
+}
+.button.check:before {
+  content: "Enabled";
+  color: #000;
+}
+.active {
+  background-color: #1a1a1a;
+  color: #fff;
 }
